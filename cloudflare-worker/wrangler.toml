@@ -1,0 +1,7 @@
+name = "topsy-data"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[[kv_namespaces]]
+binding = "TOPSY_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
