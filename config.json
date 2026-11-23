@@ -1,0 +1,5 @@
+{
+  "dataBaseUrl": "https://raw.githubusercontent.com/myprefrontalcortex/topsy-showcase/data",
+  "pollIntervalMs": 60000,
+  "historyPollIntervalMs": 300000
+}
