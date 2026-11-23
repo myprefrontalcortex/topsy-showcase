@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 interface TestPatternStandbyProps {
   message?: string;
   generatedAt?: string | null;
+  channelUrl?: string | null;
 }
 
 const DEFAULT_MESSAGE = 'Terrarium maintenance in progress — live broadcast will resume shortly.';
+const DEFAULT_YOUTUBE_CHANNEL = 'https://www.youtube.com/@MYprefrontalRIDES';
 
-export const TestPatternStandby: React.FC<TestPatternStandbyProps> = ({ message, generatedAt }) => {
+export const TestPatternStandby: React.FC<TestPatternStandbyProps> = ({ message, generatedAt, channelUrl }) => {
   const [clock, setClock] = useState(() =>
     new Date().toLocaleTimeString('en-GB', { hour12: false })
   );
@@ -20,6 +22,7 @@ export const TestPatternStandby: React.FC<TestPatternStandbyProps> = ({ message,
   }, []);
 
   const displayMessage = message && message.trim() ? message.trim() : DEFAULT_MESSAGE;
+  const youtubeHref = channelUrl && channelUrl.trim() ? channelUrl.trim() : DEFAULT_YOUTUBE_CHANNEL;
 
   return (
     <div className="standby-viewport">
@@ -178,6 +181,20 @@ export const TestPatternStandby: React.FC<TestPatternStandbyProps> = ({ message,
             <div className="crt-scanlines" />
             <div className="crt-vignette" />
           </div>
+        </div>
+
+        <div className="crt-yt-bar">
+          <span className="crt-yt-prompt">While you wait, catch past streams &amp; clips on YouTube:</span>
+          <a
+            className="crt-yt-btn"
+            href={youtubeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span aria-hidden="true">▶</span>
+            <span>Watch on YouTube (@MYprefrontalRIDES)</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
 
         <div className="crt-footer-bar">

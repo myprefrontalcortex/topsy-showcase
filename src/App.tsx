@@ -43,6 +43,7 @@ export const App: React.FC = () => {
       <TestPatternStandby
         message={telemetry?.maintenance_message}
         generatedAt={telemetry?.generated_at}
+        channelUrl={telemetry?.youtube?.channel_url}
       />
     );
   }
