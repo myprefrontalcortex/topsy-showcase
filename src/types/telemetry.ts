@@ -110,18 +110,19 @@ export interface MediaAvailability {
   thermal_available: boolean;
   thermal_updated_at: string | null;
   topsy_snapshot_available: boolean;
-  mimicam_available: boolean;
 }
 
 export interface TelemetryData {
   generated_at: string;
-  climate: ClimateSummary;
-  weather: WeatherSummary;
-  system: SystemSummary;
-  automation: AutomationSummary;
-  youtube: YoutubeSummary;
-  maintenance: MaintenanceSummary;
-  motion: MotionSummary;
+  maintenance_mode?: boolean;
+  maintenance_message?: string;
+  climate: ClimateSummary | null;
+  weather: WeatherSummary | null;
+  system: SystemSummary | null;
+  automation: AutomationSummary | null;
+  youtube: YoutubeSummary | null;
+  maintenance: MaintenanceSummary | null;
+  motion: MotionSummary | null;
   media: MediaAvailability;
 }
 

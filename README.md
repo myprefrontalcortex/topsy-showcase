@@ -11,7 +11,7 @@ All control relays, private device credentials, LAN/Tailscale endpoints, Telegra
   - **Daily History (`30D` – `90D`):** Long-term daily mean, median, and max climate trends.
   - **AC History:** Daily cooling cycle counts, median duration, total hours vs outdoor max temperature.
   - **Biometrics & Health Log:** Dual-axis SVL (cm) + Weight (g) growth timeline with feeding, shedding, and terrarium cleaning markers.
-- **Live Camera & Thermal Feeds:** YouTube Live embed with optional Snapshot mode toggle, `256×192` UVC Infrared thermal heatmap, and conditional privacy-cropped MimiCam snapshot.
+- **Live Camera & Thermal Feeds:** YouTube Live embed with optional Snapshot mode toggle and `256×192` UVC Infrared thermal heatmap.
 - **Care & Automation Badges:** Read-only header status chips for deep clean countdown, feeding, skin shedding forecast window, Mimi-chan care schedule, plus autonomous misting/fan/AC status pills and recent motion timestamps.
 
 ## Local Development

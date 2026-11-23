@@ -14,7 +14,6 @@ const ALLOWED_KEYS = new Set([
   'biometrics.json',
   'thermal.jpg',
   'topsy_snapshot.jpg',
-  'mimicam_snapshot.jpg',
 ]);
 
 const CORS_HEADERS = {

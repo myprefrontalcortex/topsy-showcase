@@ -6,9 +6,9 @@ import { HabitatStatusPanel } from './components/HabitatStatusPanel';
 import { Header } from './components/Header';
 import { ImageLightbox } from './components/ImageLightbox';
 import { LiveCameraPanel } from './components/LiveCameraPanel';
-import { MimiCamPanel } from './components/MimiCamPanel';
 import { MotionActivityPanel } from './components/MotionActivityPanel';
 import { StatsGrid } from './components/StatsGrid';
+import { TestPatternStandby } from './components/TestPatternStandby';
 import { ThermalPanel } from './components/ThermalPanel';
 import { useShowcaseData } from './hooks/useShowcaseData';
 
@@ -31,6 +31,21 @@ export const App: React.FC = () => {
 
   const openImage = (src: string, title: string) => setLightbox({ src, title });
   const closeImage = () => setLightbox({ src: null, title: '' });
+
+  const standbyParam = new URLSearchParams(window.location.search).get('standby');
+  const isStandby =
+    standbyParam === '1' ||
+    standbyParam === 'true' ||
+    Boolean(telemetry?.maintenance_mode);
+
+  if (isStandby) {
+    return (
+      <TestPatternStandby
+        message={telemetry?.maintenance_message}
+        generatedAt={telemetry?.generated_at}
+      />
+    );
+  }
 
   const terraTemp = telemetry?.climate?.temperature ?? null;
 
@@ -62,7 +77,7 @@ export const App: React.FC = () => {
             dataBaseUrl={dataBaseUrl}
             mediaVersion={mediaVersion}
             generatedAt={telemetry?.generated_at}
-            youtube={telemetry?.youtube}
+            youtube={telemetry?.youtube ?? undefined}
             media={telemetry?.media}
             onOpenImage={openImage}
           />
@@ -72,16 +87,8 @@ export const App: React.FC = () => {
             media={telemetry?.media}
             onOpenImage={openImage}
           />
-          {telemetry?.media?.mimicam_available && (
-            <MimiCamPanel
-              dataBaseUrl={dataBaseUrl}
-              mediaVersion={mediaVersion}
-              generatedAt={telemetry?.generated_at}
-              onOpenImage={openImage}
-            />
-          )}
-          <HabitatStatusPanel automation={telemetry?.automation} />
-          <MotionActivityPanel motion={telemetry?.motion} />
+          <HabitatStatusPanel automation={telemetry?.automation ?? undefined} />
+          <MotionActivityPanel motion={telemetry?.motion ?? undefined} />
         </div>
       </main>
 
